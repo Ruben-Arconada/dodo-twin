@@ -1,0 +1,267 @@
+{
+  "version": "1.0",
+  "scale_m": 0.7,
+  "seed": 42,
+  "joints": [
+    {
+      "id": "body_pitch",
+      "label": "Inclinación del cuerpo",
+      "group": "Cuerpo",
+      "parent": "base",
+      "axis": "x",
+      "axisSign": 1,
+      "min": -7,
+      "max": 7,
+      "neutral": 0,
+      "maxVelocity": 8,
+      "maxAcceleration": 20,
+      "mechanism": "Basculación del tronco; transmisión pendiente"
+    },
+    {
+      "id": "neck_yaw",
+      "label": "Giro del cuello",
+      "group": "Cuello",
+      "parent": "body_pitch",
+      "axis": "y",
+      "axisSign": 1,
+      "min": -35,
+      "max": 35,
+      "neutral": 0,
+      "maxVelocity": 30,
+      "maxAcceleration": 65,
+      "mechanism": "Eje de giro en la base del cuello"
+    },
+    {
+      "id": "neck_pitch",
+      "label": "Inclinación del cuello",
+      "group": "Cuello",
+      "parent": "neck_yaw",
+      "axis": "x",
+      "axisSign": 1,
+      "min": -18,
+      "max": 22,
+      "neutral": 0,
+      "maxVelocity": 22,
+      "maxAcceleration": 55,
+      "mechanism": "Cuello articulado; recorrido provisional"
+    },
+    {
+      "id": "head_yaw",
+      "label": "Giro de la cabeza",
+      "group": "Cabeza",
+      "parent": "neck_pitch",
+      "axis": "y",
+      "axisSign": 1,
+      "min": -30,
+      "max": 30,
+      "neutral": 0,
+      "maxVelocity": 40,
+      "maxAcceleration": 110,
+      "mechanism": "Eje de orientación de la cabeza"
+    },
+    {
+      "id": "head_pitch",
+      "label": "Inclinación de la cabeza",
+      "group": "Cabeza",
+      "parent": "head_yaw",
+      "axis": "x",
+      "axisSign": 1,
+      "min": -25,
+      "max": 28,
+      "neutral": 0,
+      "maxVelocity": 35,
+      "maxAcceleration": 90,
+      "mechanism": "Eje de cabeceo"
+    },
+    {
+      "id": "beak",
+      "label": "Apertura del pico",
+      "group": "Cabeza",
+      "parent": "head_pitch",
+      "axis": "x",
+      "axisSign": 1,
+      "min": 0,
+      "max": 24,
+      "neutral": 0,
+      "maxVelocity": 45,
+      "maxAcceleration": 130,
+      "mechanism": "Mandíbula inferior móvil"
+    },
+    {
+      "id": "wing_left",
+      "label": "Ala izquierda",
+      "group": "Alas",
+      "parent": "body_pitch",
+      "axis": "z",
+      "axisSign": -1,
+      "min": -5,
+      "max": 25,
+      "neutral": 0,
+      "maxVelocity": 28,
+      "maxAcceleration": 75,
+      "mechanism": "Eje del ala; signo invertido en el enlace visual"
+    },
+    {
+      "id": "wing_right",
+      "label": "Ala derecha",
+      "group": "Alas",
+      "parent": "body_pitch",
+      "axis": "z",
+      "axisSign": -1,
+      "min": -25,
+      "max": 5,
+      "neutral": 0,
+      "maxVelocity": 28,
+      "maxAcceleration": 75,
+      "mechanism": "Eje del ala derecha"
+    }
+  ],
+  "poses": [
+    {
+      "id": "neutral",
+      "name": "Postura neutra",
+      "pose": {
+        "body_pitch": 0,
+        "neck_yaw": 0,
+        "neck_pitch": 0,
+        "head_yaw": 0,
+        "head_pitch": 0,
+        "beak": 0,
+        "wing_left": 0,
+        "wing_right": 0
+      }
+    },
+    {
+      "id": "curious",
+      "name": "Mirada curiosa",
+      "pose": {
+        "body_pitch": 0,
+        "neck_yaw": -14,
+        "neck_pitch": -5,
+        "head_yaw": -8,
+        "head_pitch": 8,
+        "beak": 0,
+        "wing_left": 0,
+        "wing_right": 0
+      }
+    },
+    {
+      "id": "listen",
+      "name": "Escuchar a la derecha",
+      "pose": {
+        "body_pitch": 0,
+        "neck_yaw": 18,
+        "neck_pitch": 0,
+        "head_yaw": 11,
+        "head_pitch": -8,
+        "beak": 0,
+        "wing_left": 0,
+        "wing_right": 0
+      }
+    }
+  ],
+  "sequences": [
+    {
+      "id": "hello",
+      "name": "Saludo tranquilo",
+      "frames": [
+        {
+          "name": "Mirada curiosa",
+          "pose": {
+            "body_pitch": 0,
+            "neck_yaw": -14,
+            "neck_pitch": -5,
+            "head_yaw": -8,
+            "head_pitch": 8,
+            "beak": 0,
+            "wing_left": 0,
+            "wing_right": 0
+          },
+          "hold": 1
+        },
+        {
+          "name": "Escuchar",
+          "pose": {
+            "body_pitch": 0,
+            "neck_yaw": 18,
+            "neck_pitch": 0,
+            "head_yaw": 11,
+            "head_pitch": -8,
+            "beak": 0,
+            "wing_left": 0,
+            "wing_right": 0
+          },
+          "hold": 1
+        },
+        {
+          "name": "Reposo",
+          "pose": {
+            "body_pitch": 0,
+            "neck_yaw": 0,
+            "neck_pitch": 0,
+            "head_yaw": 0,
+            "head_pitch": 0,
+            "beak": 0,
+            "wing_left": 0,
+            "wing_right": 0
+          },
+          "hold": 1
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "encuentro",
+      "name": "Un encuentro · 22 s",
+      "seed": 42,
+      "duration": 22,
+      "events": [
+        {
+          "at": 1,
+          "env": {
+            "presence": true,
+            "distance": 3,
+            "azimuth": -35
+          }
+        },
+        {
+          "at": 5,
+          "env": {
+            "distance": 1,
+            "azimuth": 15
+          }
+        },
+        {
+          "at": 9,
+          "env": {
+            "sound": 0.95
+          }
+        },
+        {
+          "at": 9.4,
+          "env": {
+            "sound": 0
+          }
+        },
+        {
+          "at": 14,
+          "env": {
+            "azimuth": 35
+          }
+        },
+        {
+          "at": 17,
+          "touch": true
+        },
+        {
+          "at": 20,
+          "env": {
+            "presence": false,
+            "light": 0.08
+          }
+        }
+      ]
+    }
+  ]
+}
